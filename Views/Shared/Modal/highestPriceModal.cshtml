@@ -1,0 +1,37 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+}
+
+@* Views/Shared/Modal/highestPriceModal.cshtml *@
+
+@using System.Globalization
+@model Car
+  
+<div class="modal fade"
+     id="highestPriceModal"
+     tabindex="-1"
+     aria-labelledby="highestPriceModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="highestPriceModalLabel">Thông Tin Sản Phẩm Giá Cao Nhất</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Phiên bản: </strong>@Model.phienban</p>
+                <p><strong>Giá:</strong> @string.Format(new CultureInfo("vi-VN"), "{0:C0}", Model.gia)</p>
+                <p><strong>Mẫu:</strong>@Model.mau_id</p>
+                <p><strong>Động cơ:</strong>@Model.dongco_id</p>
+                <p><strong>Kích thước:</strong>@Model.kichthuoc_id</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="modal fade" id="addCarModal" tabindex="-1" role="dialog" aria-labelledby="addCarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCarModalLabel">Thêm Xe Mới</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Create" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="phienban">Phiên Bản</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="phienban" 
+                            name="phienban" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="gia">Giá</label>
+                        <input 
+                            type="number" 
+                            class="form-control" 
+                            id="gia" 
+                            name="gia" 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mau_id">Màu Sắc</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="mau_id" 
+                            name="mau_id" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="dongco_id">Động Cơ</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="dongco_id" 
+                            name="dongco_id" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="kichthuoc_id">Kích Thước</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="kichthuoc_id" 
+                            name="kichthuoc_id" 
+                            required
+                        >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!-- Modal hiển thị thông tin xe -->
+<div class="modal fade" id="showCarModal" tabindex="-1" aria-labelledby="showCarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showCarModalLabel">Gía lăn bánh tại Cần thơ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Mã xe -->
+                <div class="mb-3">
+                    <label for="showCarId" class="form-label">Mã Xe:</label>
+                    <input type="text" id="showCarId" class="form-control" readonly>
+                </div>
+                <!-- Phiên bản -->
+                <div class="mb-3">
+                    <label for="showCarPhienban" class="form-label">Phiên Bản:</label>
+                    <input type="text" id="showCarPhienban" class="form-control" readonly>
+                </div>
+                <!-- Giá -->
+                <div class="mb-3">
+                    <label for="showCarGia" class="form-label">Giá:</label>
+                    <input type="text" id="showCarGia" class="form-control" readonly>
+                </div>
+                <!-- Màu sắc -->
+                <div class="mb-3">
+                    <label for="showCarMau" class="form-label">Mẫu:</label>
+                    <input type="text" id="showCarMau" class="form-control" readonly>
+                </div>
+                <!-- Động cơ -->
+                <div class="mb-3">
+                    <label for="showCarDongco" class="form-label">Động Cơ:</label>
+                    <input type="text" id="showCarDongco" class="form-control" readonly>
+                </div>
+                <!-- Kích thước -->
+                <div class="mb-3">
+                    <label for="showCarKichthuoc" class="form-label">Kích Thước:</label>
+                    <input type="text" id="showCarKichthuoc" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

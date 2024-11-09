@@ -1,0 +1,97 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+/* Khung tổng */
+.table-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header cho bảng */
+.table-header {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.table-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.table-header .btn {
+    font-size: 0.9rem;
+}
+
+/* Tiêu đề bảng */
+.table thead th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+    padding: 16px;
+}
+
+/* Các ô trong bảng */
+.table tbody td {
+    padding: 14px;
+    vertical-align: middle;
+    color: #555;
+}
+
+/* Hiệu ứng hover */
+.table-hover tbody tr:hover {
+    background-color: #f1f7fd;
+    transition: background-color 0.3s ease;
+}
+
+/* Trạng thái badge */
+.badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+/* Các nút hành động */
+.action-buttons i {
+    font-size: 1.1rem;
+    color: #0d6efd;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .action-buttons i:hover {
+        color: #084298;
+    }

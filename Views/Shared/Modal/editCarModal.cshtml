@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- Modal chỉnh sửa thông tin xe -->
+<div class="modal fade" id="editCarModal" tabindex="-1" aria-labelledby="editCarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCarModalLabel">Chỉnh Sửa Xe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Cars/Edit">
+                {{ localhost:7178/{action} }}
+                <!-- Đảm bảo rằng action này trỏ tới đúng controller và action -->
+                <div class="modal-body">
+                    <input type="hidden" id="editCarId" name="id">
+                    <div class="mb-3">
+                        <label for="editCarPhienban" class="form-label">Phiên Bản</label>
+                        <input type="text" class="form-control" id="editCarPhienban" name="phienban" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCarGia" class="form-label">Giá</label>
+                        <input type="number" class="form-control" id="editCarGia" name="gia" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCarMau" class="form-label">Màu Sắc</label>
+                        <input type="text" class="form-control" id="editCarMau" name="mau_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCarDongco" class="form-label">Động Cơ</label>
+                        <input type="text" class="form-control" id="editCarDongco" name="dongco_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCarKichthuoc" class="form-label">Kích Thước</label>
+                        <input type="text" class="form-control" id="editCarKichthuoc" name="kichthuoc_id" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

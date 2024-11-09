@@ -1,0 +1,212 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var currentPage     = ViewBag.CurrentPage;
+    var totalPages      = ViewBag.TotalPages;
+    var highestPriceCar = ViewBag.HighestPriceCar as Car;
+}
+
+@model List<Car>
+@using System.Globalization
+
+<div class="container table-container">
+    <!-- Header cho bảng -->
+    <div class="table-header">
+        <h3>Danh Sách Sản Phẩm</h3>
+        <form class="d-flex align-items-center">
+            <select class="form-select me-2" aria-label="Chọn loại sản phẩm" style="height: 38px;">
+                <option selected>Chức năng</option>
+                <option value="1">Thêm xe mới</option>
+                <option value="2">Lịch sử chỉnh sửa</option>
+            </select>
+            <!-- Nút để mở modal -->
+            <button type="button"
+                    class="btn btn-light btn-outline-primary text-black"
+                    data-bs-toggle="modal"
+                    data-bs-target="#highestPriceModal"
+                    style="height: 38px;">
+            Max
+            </button>
+        </form>
+    </div>
+
+    <!-- Bảng dữ liệu -->
+    <table class="table table-hover mb-0 text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Phiên bản</th>
+                <th>Giá</th>
+                <th>Mẫu</th>
+                <th>Động cơ</th>
+                <th>Kích thước</th>
+                <th>Tùy chọn</th>
+                <th>Giá lăn bánh</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.id</td>
+                    <td>@car.phienban</td>
+                    <td>@string.Format(new CultureInfo("vi-VN"), "{0:C0}", car.gia)</td>
+                    <td>@car.mau_id</td>
+                    <td>@car.dongco_id</td>
+                    <td>@car.kichthuoc_id</td>
+                    <td class="action-buttons">
+                        <i 
+                            class="bi bi-pencil-square" 
+                            title="Chỉnh sửa"
+                            data-bs-toggle="modal"
+                            data-bs-target="#editCarModal"
+                            data-id="@car.id"
+                            data-phienban="@car.phienban"
+                            data-gia="@car.gia"
+                            data-mau="@car.mau_id"
+                            data-dongco="@car.dongco_id"
+                            data-kichthuoc="@car.kichthuoc_id">
+                        </i>
+
+                       <i 
+                           class="bi bi-trash" 
+                           title="Xóa"
+                           data-bs-toggle="modal"
+                           data-bs-target="#deleteConfirmationModal"
+                           data-id="@car.id"
+                       >
+
+                       </i>
+                    </td>
+                    <td class="action-buttons">
+                        <i 
+                            class="bi bi-eye" 
+                            title="Xem"
+                            data-bs-toggle="modal"
+                            data-bs-target="#showCarModal"
+                            data-id="@car.id"
+                            data-phienban="@car.phienban"
+                            data-gia="@car.gia"
+                            data-mau="@car.mau_id"
+                            data-dongco="@car.dongco_id"
+                            data-kichthuoc="@car.kichthuoc_id">
+                        </i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <nav aria-label="Page navigation" class="my-3">
+        <ul class="pagination justify-content-center">
+            @if (currentPage > 1)
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                </li>
+            }
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @if (i == currentPage) {<text>active</text> }">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
+            @if(currentPage < totalPages)
+            {            
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1})">Sau</a>
+                </li>   
+            }
+        </ul>
+    </nav>
+</div>
+
+
+@await Html.PartialAsync("Modal/highestPriceModal", highestPriceCar)
+
+@await Html.PartialAsync("Modal/addCarModal")
+
+@await Html.PartialAsync("Modal/editCarModal")
+
+@await Html.PartialAsync("Modal/showCarModal")
+
+@await Html.PartialAsync("Modal/deleteConfirmationModal")
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const selectFunction = document.querySelector('.form-select');
+
+        selectFunction.addEventListener('change', function () {
+            if (this.value === '1') { // Giá trị '1' là "Thêm xe mới"
+                var addCarModal = new bootstrap.Modal(document.getElementById('addCarModal'));
+                addCarModal.show();
+
+                // Reset lại dropdown về "Chức năng" sau khi hiển thị modal
+                this.value = "Chức năng";
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lắng nghe sự kiện khi mở modal "Sửa"
+        const editCarModal = document.getElementById('editCarModal');
+
+        editCarModal.addEventListener('show.bs.modal', function (event) {
+            const button    = event.relatedTarget;
+
+            const carId     = button.getAttribute('data-id');
+            const phienban  = button.getAttribute('data-phienban');
+            const gia       = button.getAttribute('data-gia');
+            const mau       = button.getAttribute('data-mau');
+            const dongco    = button.getAttribute('data-dongco');
+            const kichthuoc = button.getAttribute('data-kichthuoc');
+
+            document.getElementById('editCarId').value = carId;
+            document.getElementById('editCarPhienban').value = phienban;
+            document.getElementById('editCarGia').value = gia;
+            document.getElementById('editCarMau').value = mau;
+            document.getElementById('editCarDongco').value = dongco;
+            document.getElementById('editCarKichthuoc').value = kichthuoc;
+        });
+
+        // Lắng nghe sự kiện khi mở modal "Xem"
+        const showCarModal = document.getElementById('showCarModal');
+
+        showCarModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+
+            const carId = button.getAttribute('data-id');
+            const phienban = button.getAttribute('data-phienban');
+            const gia = parseFloat(button.getAttribute('data-gia'));
+            const mau = button.getAttribute('data-mau');
+            const dongco = button.getAttribute('data-dongco');
+            const kichthuoc = button.getAttribute('data-kichthuoc');
+
+            const giaLanBanh = gia + (gia * 0.1) + 1560000 + 437000 + 1000000 + 340000;
+
+            document.getElementById('showCarId').value = carId;
+            document.getElementById('showCarPhienban').value = phienban;
+            document.getElementById('showCarGia').value = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(giaLanBanh);
+            document.getElementById('showCarMau').value = mau;
+            document.getElementById('showCarDongco').value = dongco;
+            document.getElementById('showCarKichthuoc').value = kichthuoc;
+        });
+
+        // Lắng nghe sự kiện khi mở modal "Xóa"
+        const deleteCarModal = document.getElementById('deleteConfirmationModal');
+
+        deleteCarModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+
+            // Lấy ID của xe từ thuộc tính data-id
+            const carId = button.getAttribute('data-id');
+
+            // Đặt giá trị vào input ẩn trong form xóa
+            document.getElementById('deleteCarId').value = carId;
+        });
+    });
+
+
+</script>
