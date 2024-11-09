@@ -1,5 +1,5 @@
 # Quản lý thông tin xe ô tô
-## Chức năng của web
+## 1. Chức năng của web
 - Kết nối với cơ sở dữ liệu MySQL
 - Hiển thị dữ liệu từ cơ sở dữ liệu MySQL lên web 
 - Hiển thị xe có mức giá cao nhất
@@ -8,15 +8,15 @@
 - Xóa một xe
 - Sử dụng phân trang để hiển thị dữ liệu trên web
 - Hiển thị giá lăn bánh của xe tại Cần Thơ
-## Công nghệ sử dụng
+## 2. Công nghệ sử dụng
 - Ngôn ngữ lập trình: c-sharp, javascript
 - Cơ sở dữ liệu: MySQL
 - Framework: Asp.Net MVC, Bootstrap 5.3
 - Thư viện: ADO
 - Giao diện web: HTML, CSS
-## Mô tả cơ sở dữ liệu
+## 3. Mô tả cơ sở dữ liệu
 
-## Giao diện web
+## 4. Giao diện web
 1. Giao diện hiển thị thông tin xe:
 ![image](https://github.com/user-attachments/assets/595c7994-aeb6-4406-ba3e-116311ccfa34)
 2. Giao diện hiển thị giá xe lớn nhất:
